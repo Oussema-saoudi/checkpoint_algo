@@ -1,0 +1,25 @@
+ALGORITHM checkpoint
+VAR
+i: INTEGER:=0;
+sum_wor,sum_vow,sum_car:INTEGER:=0;
+sent:STRING;
+BEGIN
+REPEAT
+    Read(sent);
+UNTIL (sent[0]="")
+WHILE (sent[i]<>".") DO
+    sum_car:=sum_car+1;
+    SWITCH (sent[i]) DO
+        case "a" OR "e" OR "i" OR "o" OR "u" OR "y" OR "A" OR "E" OR "I" OR "O" OR "U" OR "Y" : sum_vow:=sum_vow+1;
+        case " " : sum_wor:=sum_wor+1;
+        default : break;
+    END_SWITCH
+    i:=i+1;
+END_WHILE
+sum_car:=sum_car+1;
+IF (sent[i-1]<>" ") THEN
+    sum_wor:=sum_wor+1;
+END_IF
+
+Write(sum_car); Write(sum_vow); Write(sum_wor);
+END
